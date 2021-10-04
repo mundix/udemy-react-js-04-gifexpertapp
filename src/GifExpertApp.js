@@ -10,15 +10,17 @@ export const GifExpertApp = () => {
     //     setCategories( cats => [...cats, name]);
     // }
 
+    // La funcion setCategories, se pasa como argumento , y es una referencia por eso 
+    // Me permite acceder a categories para asignarlo 
     return (
         <>
           <h2>Gif Expert App</h2>  
-          <AddCategory/>
+          <AddCategory setCategories={setCategories}/>
           <hr />
         
           <ol>
               { categories.map( (category, index) => {
-                  return <li key={index}>{category}</li>;
+                  return <li key={category}>{category}</li>;
               })}
           </ol>
         </>
