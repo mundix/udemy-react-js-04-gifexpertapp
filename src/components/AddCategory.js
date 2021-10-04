@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 export const AddCategory = ({setCategories}) => {
 
     // Necesito saber lo que l apersona escribe
-    const [inputValue, setInputValue] = useState();
+    //Si no le pongo nada en el intialValue del useStatus esto me devuelve undefined, y 
+    // Por eso puede dar un error no controlado al usar el input 
+    const [inputValue, setInputValue] = useState(''); //string vacio default value 
 
     // Cada ves que esa caja de trexto cambie, se ejecuta esta funcion de flecha
     const handleInputChange = (e) => {
@@ -24,7 +26,7 @@ export const AddCategory = ({setCategories}) => {
     //Si el form es el unico elemento que se devuelve ,no neceisto el <> los fragments </>
     return (
         <form onSubmit={handleSubmit}>
-            <h1>{inputValue}</h1>
+            {/* <h1>{inputValue}</h1> */}
             <input 
                 type="text" 
                 value = {inputValue}
