@@ -1,47 +1,26 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react';
 import { GifGridItem } from './GifGridItem';
-import { getGifs } from '../helpers/getGifs';
+import { useFetchGifs } from '../hooks/useFetchGifs';
 
 export const GifGrid = ({ category }) => {
-    // Necesito recibir la categoria y llamar la peticion http 
-    const [images, setImages] = useState([]); //inicializamos images como array vacio
-
-    useEffect(() => {
-        getGifs(category)
-            // .then( imgs => {setImages(imgs) } );
-            .then( setImages );
-    // }, []); //cuando se pone el [] , ecita que se ejecute mas de una vez 
-    }, [category]); //si la categoria cambia, vuelve y ejecuta esto. 
-
-    
-
-    // getGifs();
+    // const state = useFetchGifs(); //Regresa el loading y la data 
+    const { data: images, loading } = useFetchGifs(category); // se le va a pasar la category 
 
     return (
         <>
             <h3>{category}</h3>
-            <div className='card-grid'>
-                {/* <ol> */}
+            
+            {loading && <p>Loading</p>}
 
-                {/* {images.map( images => {
-                    return <li key={images.id}>{images.title}</li>;
-                })} */}
-                {/* Return implicit */}
-                {/* {images.map( img => (
-                    <li key={img.id}>{img.title}</li>
-                ))} */}
-                {/* Usando la desestructuracion */}
-                {/* {images.map( ({id, title}) => ( */}
-                {images.map(img => (
+            <div className='card-grid'>
+            {images.map(img => (
                     <GifGridItem
                         key={img.id}
-                        // img={img}
                         // Mando cada una de las propiedades en ves de la img con sus propiedeaes
                         {...img}
                     />
                 ))}
 
-                {/* </ol> */}
             </div>
         </>
 
