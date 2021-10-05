@@ -5,7 +5,7 @@ import { GifGrid } from './components/GifGrid';
 export const GifExpertApp = () => {
 
     // const categories = ['One Punch', 'Samurai X', 'Dragon ball'];
-    const [categories, setCategories] = useState(['Samurai X']);
+    const [categories, setCategories] = useState(['One Punch Men']);
 
     // const handleAdd = (name = 'HunterXHuner') => {
     //     setCategories( cats => [...cats, name]);
