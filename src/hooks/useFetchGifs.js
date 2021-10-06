@@ -24,7 +24,7 @@ export const useFetchGifs = (category) => {
                         loading: false
                     });
 
-                }, 3000);
+                }, 100);
             });
     }, [category]); //solo cuando la categoria cambia 
 
