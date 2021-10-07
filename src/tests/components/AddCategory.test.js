@@ -5,11 +5,21 @@ import { AddCategory } from "../../components/AddCategory";
 describe('Pruebas en component AddCategory', () => {
 
     const setCategories = ()=> {};
+    const wrapper = shallow(<AddCategory setCategories={setCategories}/>);
 
     test('Debe de mostrarse correctamente', () => {
-        
-        const wrapper = shallow(<AddCategory setCategories={setCategories}/>);
         expect(wrapper).toMatchSnapshot();
-    })
+    });
+
+    test('Debe de cambiar la caja de texto', () => {
+        
+        const input = wrapper.find('input');
+        // Para mandar el evento, el targe especificamente se pasa un segundo argumento, un objeto { }
+        const value = 'Hola Mundo';
+        // input.simulate('change', { target: { value:value }});
+        input.simulate('change', { target: { value }}); //forma corta cuando el property se llama igual
+        expect(wrapper.find('p').text().trim()).toBe(value);
+    });
+    
 
 })
