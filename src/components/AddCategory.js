@@ -17,7 +17,6 @@ export const AddCategory = ({setCategories}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('handleSubmit Clicked');
         if(inputValue.length > 2) {
             // setCategories(cats => [...cats, inputValue]);
             setCategories(cats => [inputValue, ...cats]); //inviertiendo cual se ponene primero 
