@@ -6,7 +6,12 @@ describe('Pruebas en component AddCategory', () => {
 
     // const setCategories = ()=> {};
     const setCategories = jest.fn(); //con la funciton de jest podemos evaluar o usar la function
-    const wrapper = shallow(<AddCategory setCategories={setCategories}/>);
+    let wrapper = shallow(<AddCategory setCategories={setCategories}/>);
+
+    beforeEach( () => {
+        jest.clearAllMocks(); //esto se llama para limpiar cualquier llamada a funciones 
+        wrapper = shallow(<AddCategory setCategories={setCategories}/>);
+    });
 
     test('Debe de mostrarse correctamente', () => {
         expect(wrapper).toMatchSnapshot();
