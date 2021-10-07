@@ -4,7 +4,8 @@ import { AddCategory } from "../../components/AddCategory";
 
 describe('Pruebas en component AddCategory', () => {
 
-    const setCategories = ()=> {};
+    // const setCategories = ()=> {};
+    const setCategories = jest.fn(); //con la funciton de jest podemos evaluar o usar la function
     const wrapper = shallow(<AddCategory setCategories={setCategories}/>);
 
     test('Debe de mostrarse correctamente', () => {
@@ -19,6 +20,13 @@ describe('Pruebas en component AddCategory', () => {
         // input.simulate('change', { target: { value:value }});
         input.simulate('change', { target: { value }}); //forma corta cuando el property se llama igual
         expect(wrapper.find('p').text().trim()).toBe(value);
+    });
+    
+    test('No debe de posterar la informacion del Subimit', () => {
+
+        wrapper.find('form').simulate('submit', { preventDefault(){}} );
+        // Para evaluar si una function se llamo toHaveBeenCalled() method
+        expect(setCategories).not.toHaveBeenCalled(); 
     });
     
 

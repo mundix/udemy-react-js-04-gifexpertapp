@@ -17,12 +17,12 @@ export const AddCategory = ({setCategories}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log('handleSubmit Clicked');
         if(inputValue.length > 2) {
             // setCategories(cats => [...cats, inputValue]);
             setCategories(cats => [inputValue, ...cats]); //inviertiendo cual se ponene primero 
             setInputValue('');
         }
-        // console.log('Submit Hecho');
     }
 
     //Si el form es el unico elemento que se devuelve ,no neceisto el <> los fragments </>
@@ -33,8 +33,8 @@ export const AddCategory = ({setCategories}) => {
             <input 
                 type="text" 
                 value = {inputValue}
-                // onChange={handleInputChange}
-                onChange={ (e) => {handleInputChange(e);}}
+                onChange={handleInputChange}
+                // onChange={ (e) => {handleInputChange(e);}}
                 />   
         </form>        
     )
