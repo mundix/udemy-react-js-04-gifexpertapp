@@ -16,18 +16,15 @@ export const useFetchGifs = (category) => {
     useEffect(() => {
         // Peticion http , donde traigo esas imagenes
         getGifs(category)
-            .then( imgs => {
-
-                setTimeout(() => {
-                    setState({
-                        data: imgs, 
-                        loading: false
-                    });
-
-                }, 100);
+            .then(imgs => {
+                setState({
+                    data: imgs,
+                    loading: false
+                });
             });
-    }, [category]); //solo cuando la categoria cambia 
-
+    //solo cuando la categoria cambia 
+    }, [category]); 
+    
     return state; //la data que es un [] y loading en true { data:[], loading:false} 
 
 }
